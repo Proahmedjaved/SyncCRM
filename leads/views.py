@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Lead
@@ -14,12 +14,13 @@ class IndexView(generic.ListView):
 
 class LeadCreate(CreateView):
     model = Lead
-    fields = ['lead_title','lead_text', 'created_at']
+    fields = ['lead_title','lead_text']
+    success_url = reverse_lazy('index')
 
-# # def index(request):
-# #     leads = Lead.objects.all()
-    
-# leads = Lead.objects.all()
+class LeadUpdate(UpdateView):
+    model = Lead
+    fields = ['lead_title','lead_text']
 
-# for lead in leads:
-#     print(lead.lead_title)
+class LeadDelete(DeleteView):
+    model = Lead
+    success_url = reverse_lazy('index')

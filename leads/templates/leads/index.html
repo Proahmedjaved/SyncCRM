@@ -5,14 +5,15 @@
 <div class="container">
     <div class="row">
         {% if lead_list %}
-        {% for leads in lead_list %}
+        {% for lead in lead_list %}
             <div class="col-lg-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ leads.lead_title }}</h3>
+                        <h3 class="panel-title">Lead # {{ lead.id }}: {{ lead.lead_title }}</h3>
+                        input
                     </div>
                     <div class="panel-body">
-                        {{ leads.lead_text }}
+                        {{ lead.lead_text }}
                     </div>
                 </div>
             </div>
