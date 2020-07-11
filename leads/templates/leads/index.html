@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if lead_list %}
+    {% for leads in lead_list %}
+        <h1>{{ leads.lead_title }}</h1>
+        <p>{{ leads.lead_text }}</p>
+    {% endfor %}
+    {% else %}
+        <h1>Leads are not available!</h1>
+    {% endif %}
+</body>
+</html>
+
