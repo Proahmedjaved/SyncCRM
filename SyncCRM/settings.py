@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'leads.apps.LeadsConfig'
 ]
+
+
+
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

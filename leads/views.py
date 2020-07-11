@@ -9,7 +9,7 @@ class IndexView(generic.ListView):
     # context_object_name = "leads"
 
     def get_queryset(self):
-        return Lead.objects.all()
+        return Lead.objects.order_by("-created_at")
 
 # # def index(request):
 # #     leads = Lead.objects.all()
