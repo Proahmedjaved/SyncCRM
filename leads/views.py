@@ -11,6 +11,9 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Lead.objects.order_by("-created_at")
 
+# class DetailView(generic.DetailView):
+#     template_name
+
 # # def index(request):
 # #     leads = Lead.objects.all()
     
