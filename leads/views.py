@@ -8,7 +8,6 @@ from .models import Lead
 class IndexView(generic.ListView):
     template_name = "leads/index.html"
     # context_object_name = "leads"
-
     def get_queryset(self):
         return Lead.objects.order_by("-created_at")
 
@@ -29,3 +28,13 @@ class LeadUpdate(UpdateView):
 class LeadDelete(DeleteView):
     model = Lead
     success_url = reverse_lazy('leads:index')
+
+
+def user_lead(request):
+    u_lead_list = Lead.objects.all()
+    lst = []
+    for lead in u_lead_list:
+        if lead.user.username == request.user.username:
+            lst.append(lead)
+    context = {'lead_list':lst}
+    return render(request, 'leads/mylead.html', context)

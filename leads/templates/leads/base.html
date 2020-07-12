@@ -26,11 +26,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'leads:index' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'leads:mylead' %}">My Lead</a></li>
                     <li><a href="{% url 'leads:create' %}">Create Lead</a></li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li><img src="{{ user.profile.image.url }}" alt="" class="img-circle mt-4 mr-4" style="width: 30px; height: 30px;"></li>
+                        <li><img src="{{ user.profile.image.url }}" alt="" class="img-circle mt-4 mr-4s" style="width: 30px; height: 30px;"></li>
                         <li><a href="{% url 'users:profile' %}">Profile</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
