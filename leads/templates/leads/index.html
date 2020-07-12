@@ -4,13 +4,15 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        {% if user.is_authenticated %}
         {% if lead_list %}
         {% for lead in lead_list %}
             <div class="col-lg-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                     <div class="d-flex">
-                        <h3 class="mt-0 mb-0">{{ lead.lead_title }}</h3>
+                        <img src="{{ lead.user.profile.image.url }}" alt="" class="img-circle" style="width: 30px; height: 30px;">
+                        <h3 class=" ml-4 mt-0 mb-0">{{ lead.lead_title }}</h3>
                         <div class="ml-auto">
                         <a href="/leads/{{lead.id}}/update" class="btn btn-default btn-sm ml-auto ">Update</a>
                         <a href="/leads/{{lead.id}}/delete" class="btn btn-danger btn-sm ml-auto ">Delete</a>
@@ -20,9 +22,9 @@
                     <div class="panel-body">
                         {{ lead.lead_text }}
                         {% if lead.updated_at %}
-                           <p>{{lead.updated_at}}</p><br>
+                           <p>{{ lead.updated_at }}</p><br>
                         {% else %}
-                            <p>{{ lead.created_at }} </p><br>
+                            <p>{{lead.created_at }} </p><br>
                         {% endif %}
                     </div>
                 </div>
@@ -34,6 +36,16 @@
     <div class="alert alert-dismissible alert-danger">
         Leads are not available!
     </div>
+    {% endif %}
+    {% else %}
+            <div class="container">
+        <h2>You have been logged out.</h2>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a href="{% url 'login' %}" class="ml-2">Log in again</a>
+            </small>
+        </div>
+        </div>
     {% endif %}
 </div>
 {% endblock  %}

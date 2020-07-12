@@ -17,6 +17,10 @@ class LeadCreate(CreateView):
     fields = ['lead_title','lead_text']
     success_url = reverse_lazy('leads:index')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(LeadCreate, self).form_valid(form)
+
 class LeadUpdate(UpdateView):
     model = Lead
     fields = ['lead_title','lead_text']
