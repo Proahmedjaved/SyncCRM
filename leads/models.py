@@ -6,7 +6,7 @@ class Lead(models.Model):
     lead_text = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, default='', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.lead_title

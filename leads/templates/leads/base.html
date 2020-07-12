@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static './leads/style.css' %}">
-    <title>Document</title>
+    <title>&#128523; CRM Project</title>
 </head>
 
 <body>
@@ -29,8 +29,13 @@
                     <li><a href="{% url 'leads:create' %}">Create Lead</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="{% url 'users:register' %}">Signup</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'users:register' %}">Signup</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
