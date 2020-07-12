@@ -15,12 +15,13 @@ class IndexView(generic.ListView):
 class LeadCreate(CreateView):
     model = Lead
     fields = ['lead_title','lead_text']
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('leads:index')
 
 class LeadUpdate(UpdateView):
     model = Lead
     fields = ['lead_title','lead_text']
-
+    success_url = reverse_lazy('leads:index')
+    
 class LeadDelete(DeleteView):
     model = Lead
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('leads:index')

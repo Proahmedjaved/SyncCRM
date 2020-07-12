@@ -9,11 +9,21 @@
             <div class="col-lg-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Lead # {{ lead.id }}: {{ lead.lead_title }}</h3>
-                        input
+                    <div class="d-flex">
+                        <h3 class="mt-0 mb-0">{{ lead.lead_title }}</h3>
+                        <div class="ml-auto">
+                        <a href="/leads/{{lead.id}}/update" class="btn btn-default btn-sm ml-auto ">Update</a>
+                        <a href="/leads/{{lead.id}}/delete" class="btn btn-danger btn-sm ml-auto ">Delete</a>
+                        </div>
+                    </div>
                     </div>
                     <div class="panel-body">
                         {{ lead.lead_text }}
+                        {% if lead.updated_at %}
+                           <p>{{lead.updated_at}}</p><br>
+                        {% else %}
+                            <p>{{ lead.created_at }} </p><br>
+                        {% endif %}
                     </div>
                 </div>
             </div>

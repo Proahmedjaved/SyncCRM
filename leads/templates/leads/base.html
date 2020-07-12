@@ -25,15 +25,23 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'create' %}">Create Lead</a></li>
+                    <li><a href="{% url 'leads:index' %}">Home</a></li>
+                    <li><a href="{% url 'leads:create' %}">Create Lead</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Login</a></li>
+                    <li><a href="{% url 'users:register' %}">Signup</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="container">
+            <div class="alert alert-{{message.tags}}">{{ message }}</div>
+            </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
 </body>

@@ -1,0 +1,14 @@
+{% extends 'leads\base.html' %}
+
+{% block content %}
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 ">Join Today</legend>
+                {{ form.as_p }} 
+            </fieldset>
+            <button type="Submit" class="btn btn-default">Sign up</button>
+        </form>
+    </div>
+{% endblock content %}
