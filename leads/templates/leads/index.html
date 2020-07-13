@@ -21,11 +21,12 @@
                     </div>
                     </div>
                     <div class="panel-body">
-                        {{ lead.lead_text }}
+                        <h4>{{ lead.lead_text }}</h4>
+                        <p class="text-muted">Created by: {{lead.user.username }}</p>
                         {% if lead.updated_at %}
-                           <p>{{ lead.updated_at }}</p><br>
+                           <p class="text-muted">{{ lead.updated_at }}</p>
                         {% else %}
-                            <p>{{lead.created_at }} </p><br>
+                            <p class="text-muted">{{lead.created_at }} </p>
                         {% endif %}
                     </div>
                 </div>
