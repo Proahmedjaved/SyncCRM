@@ -1,1 +1,1 @@
-web: gunicorn SyncCRM.wsgi
+web: gunicorn SyncCRM:wsgi
