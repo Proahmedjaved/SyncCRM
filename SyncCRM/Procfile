@@ -1,1 +1,0 @@
-web: gunicorn synccrm.wsgi --log-file -
