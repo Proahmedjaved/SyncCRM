@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 web: gunicorn SyncCRM:wsgi
+=======
+web: gunicorn SyncCRM:wsgi
+>>>>>>> 47fec73628bd7ea43e14a8c2818b5def063ea269
