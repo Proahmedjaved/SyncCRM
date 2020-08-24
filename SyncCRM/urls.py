@@ -19,16 +19,23 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 app_name="users"
 urlpatterns = [
-    path('leads/', include("leads.urls")),
+    path('', include("leads.urls")),
     path('', include("users.urls")),
     path('login/', auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name="users/logout.html"), name="logout"),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name="users/password_reset.html"), name="password_resest"),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"), name="password_resest_done"),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="users/password_reset_confirm.html"), name="password_resest-confirm"),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+
+    # REST API URLS
+    path('api/', include("leads.api.urls") ),
+    path('api/user/', include("users.api.urls") ),
+
 ] 
 
 if settings.DEBUG:
